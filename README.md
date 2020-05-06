@@ -24,10 +24,10 @@ import Browser, { Tab, Divider, AddButton } from 'react-browser-ui'
 
 function ExampleComponent () {
   const tabEnd = (
-      <>
+      <React.Fragment>
         <Divider />
         <AddButton />
-      </>
+      </React.Fragment>
     )
     return (
       <div style={{ width: 600, height: 500, padding: '5em' }}>
