@@ -180,7 +180,7 @@ export const AddButton = (props) => {
   )
 }
 
-const Chrome = ({ activeTabKey, showHeader, children, tabEnd, onClose, onMinifyClick, onFullWindowClick }) => {
+const Chrome = ({ activeTabKey, showHeader, children, tabEnd, onClose, onMinifyClick, onFullscreenClick }) => {
   const [activeTab, setActiveTab] = useState(null)
   useEffect(() => {
     setActiveTab(activeTabKey)
@@ -220,7 +220,7 @@ const Chrome = ({ activeTabKey, showHeader, children, tabEnd, onClose, onMinifyC
             marginLeft={8}
             border={'0.5px solid #58A942'}
             boxShadow={'inset 0px 0px 6px #68CC58'}
-            onClick={onFullWindowClick} />
+            onClick={onFullscreenClick} />
         </HeaderButtonContainer>}
         {childrenWithProps}
         {tabEnd}
@@ -244,16 +244,17 @@ Chrome.propTypes = {
   tabEnd: PropTypes.node,
   onClose: PropTypes.func,
   onMinifyClick: PropTypes.func,
-  onFullWindowClick: PropTypes.func,
+  onFullscreenClick: PropTypes.func,
 }
 
 Chrome.defaultProps = {
-  initialTabKey: null,
+  activeTabKey: undefined,
   showHeader: false,
+  tabEnd: <React.Fragment />,
   children: <React.Fragment />,
   onClose: () => {},
   onMinifyClick: () => {},
-  onFullWindowClick: () => {},
+  onFullscreenClick: () => {},
 }
 
 export default Chrome
