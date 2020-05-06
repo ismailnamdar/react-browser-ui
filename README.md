@@ -49,6 +49,42 @@ function ExampleComponent () {
 }
 ```
 
+## API
+
+### Browser
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| type | *String* | 'chrome' | browser type (currently only *chrome* is supported) |
+| showHeader | *Boolean* | `false` | whether to show header of the browser |
+| activeTabKey | *String, Number* | `undefined` | active tab's key |
+| tabEnd | *ReactElements* | `<React.Fragment />` | additional react elements that will be insterted end of the tabs |
+| children | *ReactElements* | `<React.Fragment />` | `Tab` element collection will passed as a child in here |
+| onClose | *Function* | `undefined` | action will be fired when browser close button clicked |
+| onMinifyClick | *Function* | `undefined` | action will be fired when browser minify button clicked |
+| onFullscreenClick | *Function* | `undefined` | action will be fired when browser fullscreen button clicked |
+
+### Tab
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| imageUrl | *String* | `undefined` | thumbnail image of the tab |
+| title | *String, ReactElements* | `''` | title of the tab |
+| children | *ReactElements* | `<React.Fragment />` | tab content, your component will go here |
+| onClose | *Function* | `undefined` | action will be fired when tab close button clicked |
+
+### Divider
+Vertically divides items.
+ 
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| - | - | - | - |
+
+### AddButton
+Circle add button. It can take native button properties as a prop
+ 
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| - | - | - | - |
+
 ## License
 
 MIT © [ismailnamdar](https://github.com/ismailnamdar)
