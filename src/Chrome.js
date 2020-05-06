@@ -21,7 +21,8 @@ const Header = styled.div`
 const Tabs = styled.div`
   display: flex;
   height: ${props => props.height || '42px'};
-  background: linear-gradient(180deg, #DFE1E5 0.6%, #DFE1E5 99.4%);
+  // background: linear-gradient(180deg, #DFE1E5 0.6%, #DFE1E5 99.4%);
+  background-color: #ebecee;
   border-top-left-radius: ${props => !props.borderDisable && '5px'};
   border-top-right-radius: ${props => !props.borderDisable && '5px'};
   padding-right: 13px;
