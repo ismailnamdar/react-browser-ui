@@ -141,10 +141,10 @@ BrowserHeader.defaultProps = {
   children: <React.Fragment />,
 };
 
-export const Tab = ({ isActive, imageUrl, title, onClick, onClose }) => {
+export const Tab = ({ isActive, imageUrl, imageAlt, title, onClick, onClose }) => {
   return (
     <StyledTab tabIndex={0} isActive={isActive} onClick={onClick} onKeyPress={onClick}>
-      {imageUrl && <img height={'16px'} width={'16px'} src={imageUrl} />}
+      {imageUrl && <img height={'16px'} width={'16px'} src={imageUrl} alt={imageAlt} />}
       {typeof title === 'string'
         ? (<Title margin={'0 6px 0 6px'}>
           {title}
@@ -159,6 +159,7 @@ export const Tab = ({ isActive, imageUrl, title, onClick, onClose }) => {
 Tab.propTypes = {
   isActive: PropTypes.bool,
   imageUrl: PropTypes.string,
+  imageAlt: PropTypes.string,
   title: PropTypes.oneOfType([PropTypes.node, PropTypes.string]),
   onClick: PropTypes.func,
   onClose: PropTypes.func
@@ -167,6 +168,7 @@ Tab.propTypes = {
 Tab.defaultProps = {
   isActive: false,
   imageUrl: null,
+  imageAlt: '',
   title: '',
   onClick: () => {},
   onClose: () => {}

@@ -1,6 +1,6 @@
 import React from 'react'
-
 import Browser, { Tab, Divider, AddButton } from 'react-browser-ui'
+import reactImg from './react.png';
 
 export default function App () {
   const tabEnd = (
@@ -16,12 +16,12 @@ export default function App () {
         showHeader={false}
         activeTabKey={'green'}
         tabEnd={tabEnd}>
-        <Tab key={'green'} title={'Green'}>
+        <Tab key={'green'} imageUrl={reactImg} imageAlt={'green tab image'} title={'Green'}>
           <div style={{ backgroundColor: 'green', height: '100%', width: '100%', opacity: 0.9, display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
             <h1 style={{ color: 'white', margin: 0 }}>{'Your component here'}</h1>
           </div>
         </Tab>
-        <Tab key={'blue'} title={'Blue'}>
+        <Tab key={'blue'} imageUrl={reactImg} imageAlt={'blue tab image'} title={'Blue'}>
           <div style={{ backgroundColor: 'green', height: '100%', width: '100%', opacity: 0.9, display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
             <h1 style={{ color: 'white', margin: 0 }}>{'Your component here'}</h1>
           </div>

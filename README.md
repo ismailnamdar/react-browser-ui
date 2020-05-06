@@ -8,7 +8,7 @@
 
 showHeader = true             |  showHeader = false
 :-------------------------:|:-------------------------:
-![Browser ui example 1](./img/example01.png) | ![Browser ui example 2](./img/example02.png)
+![Browser ui example 1](./img/example04.png) | ![Browser ui example 2](./img/example03.png)
 
 ## Install
 
@@ -19,33 +19,36 @@ npm install --save react-browser-ui
 ## Usage
 
 ```jsx
-import React, { Component } from 'react'
-
+import React from 'react'
 import Browser, { Tab, Divider, AddButton } from 'react-browser-ui'
 
 function ExampleComponent () {
   const tabEnd = (
-    <>
-      <Divider />
-      <AddButton />
-    </>
-  )
-  return (
-    <div style={{ width: '100%', height: 600 }}>
-      <Browser
-        type={'chrome'}
-        showHeader={false}
-        activeTabKey={'green'}
-        tabEnd={tabEnd}>
-        <Tab key={'green'} title={'Green'}>
-          <div style={{ backgroundColor: 'green', height: '100%', width: '100%', opacity: 0.9 }} />
-        </Tab>
-        <Tab key={'blue'} title={'Blue'}>
-          <div style={{ backgroundColor: 'blue', height: '100%', width: '100%', opacity: 0.9 }} />
-        </Tab>
-      </Browser>
-    </div>
-  )
+      <>
+        <Divider />
+        <AddButton />
+      </>
+    )
+    return (
+      <div style={{ width: 600, height: 500, padding: '5em' }}>
+        <Browser
+          type={'chrome'}
+          showHeader={false}
+          activeTabKey={'green'}
+          tabEnd={tabEnd}>
+          <Tab key={'green'} imageUrl={''} imageAlt={'green tab image'} title={'Green'}>
+            <div style={{ backgroundColor: 'green', height: '100%', width: '100%', opacity: 0.9, display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+              <h1 style={{ color: 'white', margin: 0 }}>{'Your component here'}</h1>
+            </div>
+          </Tab>
+          <Tab key={'blue'} imageUrl={''} imageAlt={'blue tab image'} title={'Blue'}>
+            <div style={{ backgroundColor: 'green', height: '100%', width: '100%', opacity: 0.9, display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+              <h1 style={{ color: 'white', margin: 0 }}>{'Your component here'}</h1>
+            </div>
+          </Tab>
+        </Browser>
+      </div>
+    )
 }
 ```
 
@@ -67,6 +70,7 @@ function ExampleComponent () {
 | Prop | Type | Default | Description |
 | --- | --- | --- | --- |
 | imageUrl | *String* | `undefined` | thumbnail image of the tab |
+| imageAlt | *String* | `''` | alt attribute of image |
 | title | *String, ReactElements* | `''` | title of the tab |
 | children | *ReactElements* | `<React.Fragment />` | tab content, your component will go here |
 | onClose | *Function* | `undefined` | action will be fired when tab close button clicked |
