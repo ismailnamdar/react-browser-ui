@@ -35,5 +35,6 @@ export default {
     }),
     resolve(),
     commonjs()
-  ]
+  ],
+  external: ['react', 'react-dom', 'prop-types', 'styled-components'],
 }
