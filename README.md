@@ -69,6 +69,7 @@ function ExampleComponent () {
 ### Tab
 | Prop | Type | Default | Description |
 | --- | --- | --- | --- |
+| key | *String, Number* | `undefined` | tab key is required and  will be used when determining active tab |
 | imageUrl | *String* | `undefined` | thumbnail image of the tab |
 | imageAlt | *String* | `''` | alt attribute of image |
 | title | *String, ReactElements* | `''` | title of the tab |
