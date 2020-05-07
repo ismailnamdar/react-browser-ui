@@ -84,7 +84,7 @@ Vertically divides items.
 | - | - | - | - |
 
 ### AddButton
-Circle add button. It can take native button properties as a prop
+Circle add button. It can take any native button properties as a prop
  
 | Prop | Type | Default | Description |
 | --- | --- | --- | --- |
