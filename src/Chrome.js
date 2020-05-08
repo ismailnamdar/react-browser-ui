@@ -1,10 +1,7 @@
-import React, {Children, cloneElement, isValidElement, useState, useEffect} from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
-
-const SUCCESS_COLOR = '#62C655'
-const DANGER_COLOR = '#EC6A5E'
-const WARNING_COLOR = '#F5BF4F'
+import {CloseButton, FullscreenButton, MinifyButton} from './components/HeaderButton'
 
 const Header = styled.div`
   display: flex;
@@ -91,17 +88,6 @@ const HeaderButtonContainer = styled.div`
   align-items: center;
 `
 
-const HeaderButton = styled.button`
-  height: 12px;
-  width: 12px;
-  border-radius: 6px;
-  background-color: ${props => props.color};
-  border: ${props => props.border};
-  box-sizing: border-box;
-  box-shadow: ${props => props.boxShadow};
-  margin-left: ${props => props.marginLeft}px;
-  padding: 0;
-`
 const Title = styled.span`
   font-size: 14px;
   margin: 0;
@@ -112,34 +98,6 @@ const Title = styled.span`
   white-space: nowrap;
   overflow: hidden;
 `
-
-function BrowserHeader({ children }) {
-  return (
-    <Header>
-      <HeaderButton
-        color={DANGER_COLOR}
-        border={'0.5px solid #CE5347'}
-        boxShadow={'inset 0px 0px 6px #EC6D62'} />
-      <HeaderButton
-        color={WARNING_COLOR}
-        border={'0.5px solid #D6A243'}
-        boxShadow={'inset 0px 0px 6px #F5C451'} />
-      <HeaderButton
-        color={SUCCESS_COLOR}
-        border={'0.5px solid #58A942'}
-        boxShadow={'inset 0px 0px 6px #68CC58'} />
-      {children}
-    </Header>
-  )
-}
-
-BrowserHeader.propTypes = {
-  children: PropTypes.node,
-};
-
-BrowserHeader.defaultProps = {
-  children: <React.Fragment />,
-};
 
 export const Tab = ({ isActive, imageUrl, imageAlt, title, onClick, onClose }) => {
   return (
@@ -182,66 +140,35 @@ export const AddButton = (props) => {
   )
 }
 
-const Chrome = ({ activeTabKey, showHeader, children, tabEnd, onClose, onMinifyClick, onFullscreenClick }) => {
-  const [activeTab, setActiveTab] = useState(null)
-  useEffect(() => {
-    setActiveTab(activeTabKey)
-  }, [activeTabKey])
-  const onClick = (newActiveTab) => {
-    setActiveTab(newActiveTab)
-  }
-  const childrenWithProps = Children.map(children, (child, index) => {
-    if (isValidElement(child)) {
-      const modifiedChildren = [cloneElement(child, { ...child.props, isActive: child.key === activeTab, onClick: () => onClick(child.key) })]
-      if (index !== children.length - 1) {
-        modifiedChildren.push(<Divider />)
-      }
-      return modifiedChildren
-    }
-
-    return child
-  })
+const Chrome = ({ showHeader, tabs, children, tabEnd, onClose, onMinifyClick, onFullscreenClick }) => {
   return (
     <React.Fragment>
-      {showHeader && <BrowserHeader />}
+      {showHeader && (
+        <Header>
+          <CloseButton onClick={onClose} />
+          <MinifyButton onClick={onMinifyClick} />
+          <FullscreenButton onClick={onFullscreenClick} />
+        </Header>
+      )}
       <Tabs borderDisable={showHeader}>
         {!showHeader && <HeaderButtonContainer>
-          <HeaderButton
-            color={DANGER_COLOR}
-            border={'0.5px solid #CE5347'}
-            boxShadow={'inset 0px 0px 6px #EC6D62'}
-            onClose={onClose} />
-          <HeaderButton
-            color={WARNING_COLOR}
-            marginLeft={8}
-            border={'0.5px solid #D6A243'}
-            boxShadow={'inset 0px 0px 6px #F5C451'}
-            onClick={onMinifyClick} />
-          <HeaderButton
-            color={SUCCESS_COLOR}
-            marginLeft={8}
-            border={'0.5px solid #58A942'}
-            boxShadow={'inset 0px 0px 6px #68CC58'}
-            onClick={onFullscreenClick} />
+          <CloseButton onClick={onClose} />
+          <MinifyButton onClick={onMinifyClick} />
+          <FullscreenButton onClick={onFullscreenClick} />
         </HeaderButtonContainer>}
-        {childrenWithProps}
+        {tabs}
         {tabEnd}
       </Tabs>
       <Content>
-        {Children.map(children, child => {
-          if (child.key === activeTab) {
-            return child.props.children
-          }
-          return null
-        })}
+        {children}
       </Content>
     </React.Fragment>
   )
 }
 
 Chrome.propTypes = {
-  activeTabKey: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   showHeader: PropTypes.bool,
+  tabs: PropTypes.node,
   children: PropTypes.node,
   tabEnd: PropTypes.node,
   onClose: PropTypes.func,
@@ -250,8 +177,8 @@ Chrome.propTypes = {
 }
 
 Chrome.defaultProps = {
-  activeTabKey: undefined,
   showHeader: false,
+  tabs: <React.Fragment />,
   tabEnd: <React.Fragment />,
   children: <React.Fragment />,
   onClose: () => {},
