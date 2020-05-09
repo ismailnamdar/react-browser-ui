@@ -3,11 +3,13 @@ import styled from 'styled-components'
 import PropTypes from 'prop-types'
 import {CloseButton, FullscreenButton, MinifyButton} from './HeaderButton'
 
+const TAB_COLOR = "#ebecee";
+
 const Header = styled.div`
   display: flex;
   align-items: center;
   height: ${props => props.height || '20px'};
-  background-color: ${props => props.backgroundColor || '#ebecee'};
+  background-color: ${props => props.backgroundColor || TAB_COLOR};
   padding: 3px 10px 3px 10px;
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
@@ -19,7 +21,7 @@ const Tabs = styled.div`
   display: flex;
   height: ${props => props.height || '42px'};
   // background: linear-gradient(180deg, #DFE1E5 0.6%, #DFE1E5 99.4%);
-  background-color: #ebecee;
+  background-color: ${TAB_COLOR};
   border-top-left-radius: ${props => !props.borderDisable && '5px'};
   border-top-right-radius: ${props => !props.borderDisable && '5px'};
   padding-right: 13px;
@@ -42,24 +44,45 @@ const StyledTab = styled.div`
   border-top-right-radius: 8px;
   outline: none;
   background-color: ${props => props.isActive ? 'white' : 'initial'};
-  // ${props => props.isActive && `
-  //   margin-left: -1px;
-  //   margin-right: -1px;
-  //   z-index: 1;
-  //   border-style: solid;
-  //   border-width: 1px;
-  //   border-color: white;
-  // `}
-  &:hover {
-    background-color: ${props => !props.isActive && (props.hoverColor || '#F2F3F5')};
-    // border-style: solid;
-    // border-width: 1px;
-    // border-color: white;
-    // border-color: ${props => !props.isActive && (props.hoverColor || '#F2F3F5')};
-    // margin-left: -1px;
-    // margin-right: -1px;
-    // z-index: 1;
-  }
+  position: relative;
+  margin-left: -1px;
+  margin-right: -1px;
+  ${props => props.isActive && `
+    z-index: 3;
+    border-style: solid;
+    border-width: 0;
+    border-color: white;`}
+  ${props => `
+    &:hover {
+      background-color: ${!props.isActive && (props.hoverColor || '#F2F3F5')};
+      z-index: 1;
+      width: calc(100% + 2px);
+    }
+    &:${props.isActive ? '' : 'hover:'}before {
+      content: "";
+      position: absolute;
+      background-color: rgba(0,0,0,0);
+      left: -16px;
+      bottom: 0;
+      height: 8px;
+      width: 16px;
+      border-bottom-right-radius: 16px;
+      box-shadow: 8px 0 0 0 ${props.isActive ? '#ffffff' : '#F2F3F5'};
+      z-index: 1;
+    }
+    &:${props.isActive ? '' : 'hover:'}after {
+      content: "";
+      position: absolute;
+      background-color: rgba(0,0,0,0);
+      right: -16px;
+      bottom: 0;
+      height: 8px;
+      width: 16px;
+      border-bottom-left-radius: 16px;
+      box-shadow: -8px 0 0 0 ${props.isActive ? '#ffffff' : '#F2F3F5'};
+      z-index: 1;
+    }
+  `}
 `
 export const Divider = styled.div`
   background-color: #7C7F82;
