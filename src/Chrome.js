@@ -40,6 +40,7 @@ const StyledTab = styled.div`
   box-sizing: border-box;
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
+  outline: none;
   background-color: ${props => props.isActive ? 'white' : 'initial'};
   // ${props => props.isActive && `
   //   margin-left: -1px;
@@ -76,6 +77,7 @@ const CircleButton = styled.div`
   display: flex;
   justify-content: center;
   align-items: ${props => props.alignItems};
+  outline: none;
   &:hover {
     background-color: ${props => props.hoverColor || 'lightgrey'};
   }
@@ -86,6 +88,7 @@ const HeaderButtonContainer = styled.div`
   display: flex; 
   flex-direction: row; 
   align-items: center;
+ 
 `
 
 const Title = styled.span`
@@ -173,7 +176,7 @@ Chrome.propTypes = {
   tabEnd: PropTypes.node,
   onClose: PropTypes.func,
   onMinifyClick: PropTypes.func,
-  onFullscreenClick: PropTypes.func,
+  onFullscreenClick: PropTypes.func
 }
 
 Chrome.defaultProps = {
@@ -183,7 +186,11 @@ Chrome.defaultProps = {
   children: <React.Fragment />,
   onClose: () => {},
   onMinifyClick: () => {},
-  onFullscreenClick: () => {},
+  onFullscreenClick: () => {}
 }
+
+Chrome.Divider = Divider
+Chrome.Tab = Tab
+Chrome.AddButton = AddButton
 
 export default Chrome
