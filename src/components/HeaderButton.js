@@ -24,7 +24,7 @@ const CloseButton = ({ onClick }) => (
     color={DANGER_COLOR}
     border={'0.5px solid #CE5347'}
     boxShadow={'inset 0px 0px 6px #EC6D62'}
-    onClose={onClick} />
+    onClick={onClick} />
 )
 
 CloseButton.propTypes = {
