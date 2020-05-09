@@ -28,11 +28,6 @@ export default function FirefoxExample () {
             <h1 style={{ color: 'white', margin: 0 }}>{'Your component here'}</h1>
           </div>
         </Tab>
-        <Tab key={'blue1'} imageUrl={reactImg} imageAlt={'blue tab image'} title={'Blue'}>
-          <div style={{ backgroundColor: 'green', height: '100%', width: '100%', opacity: 0.9, display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-            <h1 style={{ color: 'white', margin: 0 }}>{'Your component here'}</h1>
-          </div>
-        </Tab>
       </Browser>
     </div>
   )
