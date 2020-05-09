@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
-import {CloseButton, FullscreenButton, MinifyButton} from './components/HeaderButton'
+import {CloseButton, FullscreenButton, MinifyButton} from './HeaderButton'
 
 const Header = styled.div`
   display: flex;

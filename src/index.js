@@ -1,6 +1,6 @@
 import React, {Children, cloneElement, isValidElement, useEffect, useState} from 'react'
 import PropTypes from 'prop-types'
-import Chrome, { Tab, Divider, AddButton } from './Chrome.js'
+import Chrome, { Tab, Divider, AddButton } from './components/Chrome.js'
 import Firefox from './components/Firefox'
 
 const BROWSER_TYPES = {
