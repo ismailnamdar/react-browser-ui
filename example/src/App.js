@@ -1,32 +1,27 @@
-import React from 'react'
-import Browser, { Tab, Divider, AddButton } from 'react-browser-ui'
-import reactImg from './react.png';
+import React, { useEffect } from 'react'
+import ChromeExample from './ChromeExample'
+import FirefoxExample from './FirefoxExample'
+import Browser, { Tab } from 'react-browser-ui'
+import reactImg from './react.png'
 
 export default function App () {
-  const tabEnd = (
-    <>
-      <Divider />
-      <AddButton />
-    </>
-  )
   return (
-    <div style={{ width: 600, height: 500, padding: '5em' }}>
-      <Browser
-        type={'chrome'}
-        showHeader={false}
-        activeTabKey={'green'}
-        tabEnd={tabEnd}>
-        <Tab key={'green'} imageUrl={reactImg} imageAlt={'green tab image'} title={'Green'}>
-          <div style={{ backgroundColor: 'green', height: '100%', width: '100%', opacity: 0.9, display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-            <h1 style={{ color: 'white', margin: 0 }}>{'Your component here'}</h1>
-          </div>
-        </Tab>
-        <Tab key={'blue'} imageUrl={reactImg} imageAlt={'blue tab image'} title={'Blue'}>
-          <div style={{ backgroundColor: 'green', height: '100%', width: '100%', opacity: 0.9, display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-            <h1 style={{ color: 'white', margin: 0 }}>{'Your component here'}</h1>
-          </div>
-        </Tab>
-      </Browser>
-    </div>
+    <Browser
+      type={'chrome'}
+      showHeader={false}
+      activeTabKey={'firefox'}
+      tabEnd={null}>
+      <Tab key={'chrome'} imageUrl={reactImg} imageAlt={'chrome tab image'} title={'Chrome'}>
+        <div style={{ width: "100%", height: "100%", paddingTop: "2em", display: 'flex', flexDirection: 'row', justifyContent: 'space-evenly' }}>
+          <ChromeExample />
+          <ChromeExample showHeader={true} />
+        </div>
+      </Tab>
+      <Tab key={'firefox'} imageUrl={reactImg} imageAlt={'firefox tab image'} title={'Firefox'}>
+        <div style={{ width: "100%", height: "100%", padding: "2em", display: 'flex', flexDirection: 'row' }}>
+          <FirefoxExample />
+        </div>
+      </Tab>
+    </Browser>
   )
 }
