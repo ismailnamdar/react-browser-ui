@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import ChromeExample from './ChromeExample'
 import FirefoxExample from './FirefoxExample'
 import Browser, { Tab } from 'react-browser-ui'

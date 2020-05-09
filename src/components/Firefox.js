@@ -149,6 +149,26 @@ function Firefox({ showHeader, tabs, children, tabEnd, onClose, onMinifyClick, o
   )
 }
 
+Firefox.propTypes = {
+  showHeader: PropTypes.bool,
+  tabs: PropTypes.node,
+  children: PropTypes.node,
+  tabEnd: PropTypes.node,
+  onClose: PropTypes.func,
+  onMinifyClick: PropTypes.func,
+  onFullscreenClick: PropTypes.func
+}
+
+Firefox.defaultProps = {
+  showHeader: false,
+  tabs: <React.Fragment />,
+  tabEnd: <React.Fragment />,
+  children: <React.Fragment />,
+  onClose: () => {},
+  onMinifyClick: () => {},
+  onFullscreenClick: () => {}
+}
+
 Firefox.Divider = Divider
 Firefox.Tab = Tab
 Firefox.AddButton = AddButton

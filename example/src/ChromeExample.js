@@ -2,7 +2,7 @@ import React from 'react'
 import Browser, { Tab, Divider, AddButton } from 'react-browser-ui'
 import reactImg from './react.png';
 
-export default function Chrome ({ showHeader = false }) {
+export default function ChromeExample ({ showHeader = false }) {
   const tabEnd = (
     <>
       <Divider />
