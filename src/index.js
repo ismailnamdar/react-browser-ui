@@ -22,11 +22,12 @@ const Browser = ({ type, activeTabKey, children, ...rest }) => {
   const onClick = (newActiveTab) => {
     setActiveTab(newActiveTab)
   }
+  const BrowserComponent = BROWSER_COMPONENTS[type] ? BROWSER_COMPONENTS[type] : <React.Fragment>{`${type} is currently not supported`}</React.Fragment>
   const childrenWithProps = Children.map(children, (child, index) => {
     if (isValidElement(child)) {
       const modifiedChildren = [cloneElement(child, { ...child.props, isActive: child.key === activeTab, onClick: () => onClick(child.key) })]
       if (index !== children.length - 1) {
-        modifiedChildren.push(<Divider />)
+        modifiedChildren.push(<BrowserComponent.Divider />)
       }
       return modifiedChildren
     }
@@ -39,7 +40,6 @@ const Browser = ({ type, activeTabKey, children, ...rest }) => {
     }
     return null
   })
-  const BrowserComponent = BROWSER_COMPONENTS[type] ? BROWSER_COMPONENTS[type] : <React.Fragment>{`${type} is currently not supported`}</React.Fragment>
   return (<BrowserComponent {...rest} tabs={childrenWithProps}>
     {activeChild}
   </BrowserComponent>)
@@ -48,15 +48,20 @@ const Browser = ({ type, activeTabKey, children, ...rest }) => {
 Browser.propTypes = {
   type: PropTypes.oneOf([BROWSER_TYPES.CHROME]),
   activeTabKey: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-  children: PropTypes.node,
+  children: PropTypes.node
 }
 
 Browser.defaultProps = {
   type: BROWSER_TYPES.CHROME,
   activeTabKey: undefined,
-  children: <React.Fragment />,
+  children: <React.Fragment />
 }
 
-export { Tab, Divider, AddButton }
+export {
+  // Chrome components -> maybe DEPRECATE in the future because Chrome will have those inside of it
+  Tab, Divider, AddButton,
+  Chrome,
+  Firefox
+}
 
 export default Browser

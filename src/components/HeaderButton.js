@@ -16,7 +16,8 @@ const HeaderButton = styled.button`
   box-shadow: ${props => props.boxShadow};
   margin-left: ${props => props.marginLeft}px;
   padding: 0;
-`;
+  outline: none;
+`
 
 const CloseButton = ({ onClick }) => (
   <HeaderButton
@@ -27,12 +28,12 @@ const CloseButton = ({ onClick }) => (
 )
 
 CloseButton.propTypes = {
-  onClick: PropTypes.func,
-};
+  onClick: PropTypes.func
+}
 
 CloseButton.defaultProps = {
-  onClick: () => {},
-};
+  onClick: () => {}
+}
 
 const MinifyButton = ({ onClick }) => (
   <HeaderButton
@@ -44,12 +45,12 @@ const MinifyButton = ({ onClick }) => (
 )
 
 MinifyButton.propTypes = {
-  onClick: PropTypes.func,
-};
+  onClick: PropTypes.func
+}
 
 MinifyButton.defaultProps = {
-  onClick: () => {},
-};
+  onClick: () => {}
+}
 
 const FullscreenButton = ({ onClick }) => (
   <HeaderButton
@@ -61,13 +62,13 @@ const FullscreenButton = ({ onClick }) => (
 )
 
 FullscreenButton.propTypes = {
-  onClick: PropTypes.func,
-};
+  onClick: PropTypes.func
+}
 
 FullscreenButton.defaultProps = {
-  onClick: () => {},
-};
+  onClick: () => {}
+}
 
-export { CloseButton, MinifyButton, FullscreenButton };
+export { CloseButton, MinifyButton, FullscreenButton }
 
-export default HeaderButton;
+export default HeaderButton
