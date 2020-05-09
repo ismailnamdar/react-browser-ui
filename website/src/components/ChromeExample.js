@@ -1,22 +1,29 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Browser, { Chrome } from 'react-browser-ui'
 
 const { Tab, Divider, AddButton } = Chrome
 
 export default function ChromeExample ({ showHeader = false }) {
+  const [isVisible, setIsVisible] = useState(true);
   const tabEnd = (
     <>
       <Divider />
       <AddButton />
     </>
   )
+  if (isVisible === false) {
+    return (
+      <></>
+    )
+  }
   return (
     <div style={{ width: 600, height: 500 }}>
       <Browser
         type={'chrome'}
         showHeader={showHeader}
         activeTabKey={'green'}
-        tabEnd={tabEnd}>
+        tabEnd={tabEnd}
+        onClose={() => setIsVisible(false)}>
         <Tab key={'green'} imageUrl={''} imageAlt={'green tab image'} title={'Green'}>
           <div style={{ backgroundColor: 'green', height: '100%', width: '100%', opacity: 0.9, display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
             <h1 style={{ color: 'white', margin: 0 }}>{'Your component here'}</h1>
