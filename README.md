@@ -20,35 +20,37 @@ npm install --save react-browser-ui
 
 ```jsx
 import React from 'react'
-import Browser, { Tab, Divider, AddButton } from 'react-browser-ui'
+import Browser, { Chrome } from 'react-browser-ui'
 
-function ExampleComponent () {
+const { Tab, Divider, AddButton } = Chrome
+
+export default function ChromeExample ({ showHeader = false }) {
   const tabEnd = (
-      <React.Fragment>
-        <Divider />
-        <AddButton />
-      </React.Fragment>
-    )
-    return (
-      <div style={{ width: 600, height: 500, padding: '5em' }}>
-        <Browser
-          type={'chrome'}
-          showHeader={false}
-          activeTabKey={'green'}
-          tabEnd={tabEnd}>
-          <Tab key={'green'} imageUrl={''} imageAlt={'green tab image'} title={'Green'}>
-            <div style={{ backgroundColor: 'green', height: '100%', width: '100%', opacity: 0.9, display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-              <h1 style={{ color: 'white', margin: 0 }}>{'Your component here'}</h1>
-            </div>
-          </Tab>
-          <Tab key={'blue'} imageUrl={''} imageAlt={'blue tab image'} title={'Blue'}>
-            <div style={{ backgroundColor: 'green', height: '100%', width: '100%', opacity: 0.9, display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-              <h1 style={{ color: 'white', margin: 0 }}>{'Your component here'}</h1>
-            </div>
-          </Tab>
-        </Browser>
-      </div>
-    )
+    <>
+      <Divider />
+      <AddButton />
+    </>
+  )
+  return (
+    <div style={{ width: 600, height: 500 }}>
+      <Browser
+        type={'chrome'}
+        showHeader={showHeader}
+        activeTabKey={'green'}
+        tabEnd={tabEnd}>
+        <Tab key={'green'} imageUrl={''} imageAlt={'green tab image'} title={'Green'}>
+          <div style={{ backgroundColor: 'green', height: '100%', width: '100%', opacity: 0.9, display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+            <h1 style={{ color: 'white', margin: 0 }}>{'Your component here'}</h1>
+          </div>
+        </Tab>
+        <Tab key={'blue'} imageAlt={'blue tab image'} title={'Blue'}>
+          <div style={{ backgroundColor: 'green', height: '100%', width: '100%', opacity: 0.9, display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+            <h1 style={{ color: 'white', margin: 0 }}>{'Your component here'}</h1>
+          </div>
+        </Tab>
+      </Browser>
+    </div>
+  )
 }
 ```
 
@@ -57,7 +59,7 @@ function ExampleComponent () {
 ### Browser
 | Prop | Type | Default | Description |
 | --- | --- | --- | --- |
-| type | *String* | 'chrome' | browser type (currently only *chrome* is supported) |
+| type | *String* | 'chrome' | browser type (currently only *chrome* and *firefox* is supported) |
 | showHeader | *Boolean* | `false` | whether to show header of the browser |
 | activeTabKey | *String, Number* | `undefined` | active tab's key |
 | tabEnd | *ReactElements* | `<React.Fragment />` | additional react elements that will be insterted end of the tabs |
