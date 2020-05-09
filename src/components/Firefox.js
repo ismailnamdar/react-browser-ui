@@ -2,7 +2,6 @@ import React from 'react'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
 import {CloseButton, FullscreenButton, MinifyButton} from './HeaderButton'
-import firefoxLogo from '../assets/firefox-logo.png'
 
 const TAB_COLOR = '#54585A'
 const TAB_SELECTED_BORDER = '#0080FF'
@@ -110,7 +109,7 @@ Tab.propTypes = {
 
 Tab.defaultProps = {
   isActive: false,
-  imageUrl: firefoxLogo,
+  imageUrl: undefined,
   imageAlt: '',
   title: '',
   onClick: () => {},
