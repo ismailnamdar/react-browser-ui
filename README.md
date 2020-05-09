@@ -27,10 +27,10 @@ const { Tab, Divider, AddButton } = Chrome
 
 export default function ChromeExample ({ showHeader = false }) {
   const tabEnd = (
-    <>
+    <React.Fragment>
       <Divider />
       <AddButton />
-    </>
+    </React.Fragment>
   )
   return (
     <div style={{ width: 600, height: 500 }}>
@@ -64,10 +64,10 @@ const { Tab, Divider, AddButton } = Firefox
 
 export default function FirefoxExample () {
   const tabEnd = (
-    <>
+    <React.Fragment>
       <Divider />
       <AddButton />
-    </>
+    </React.Fragment>
   )
   return (
     <div style={{ width: 600, height: 500 }}>
