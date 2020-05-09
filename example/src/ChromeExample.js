@@ -1,6 +1,8 @@
 import React from 'react'
-import Browser, { Tab, Divider, AddButton } from 'react-browser-ui'
-import reactImg from './react.png';
+import Browser, { Chrome } from 'react-browser-ui'
+import reactImg from './react.png'
+
+const { Tab, Divider, AddButton } = Chrome
 
 export default function ChromeExample ({ showHeader = false }) {
   const tabEnd = (

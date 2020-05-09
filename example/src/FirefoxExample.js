@@ -2,7 +2,7 @@ import React from 'react'
 import Browser, { Firefox } from 'react-browser-ui'
 import reactImg from './react.png'
 
-const { Tab, Divider, AddButton } = Firefox;
+const { Tab, Divider, AddButton } = Firefox
 
 export default function FirefoxExample () {
   const tabEnd = (
