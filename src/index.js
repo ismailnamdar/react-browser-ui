@@ -2,16 +2,19 @@ import React, {Children, cloneElement, isValidElement, useEffect, useState} from
 import PropTypes from 'prop-types'
 import Chrome, { Tab, Divider, AddButton } from './components/Chrome.js'
 import Firefox from './components/Firefox'
+import Safari from './components/Safari'
 
 const BROWSER_TYPES = {
   CHROME: 'chrome',
   FIREFOX: 'firefox',
+  SAFARI: 'safari',
   IE: 'ie'
 }
 
 const BROWSER_COMPONENTS = {
   [BROWSER_TYPES.CHROME]: Chrome,
-  [BROWSER_TYPES.FIREFOX]: Firefox
+  [BROWSER_TYPES.FIREFOX]: Firefox,
+  [BROWSER_TYPES.SAFARI]: Safari
 }
 
 const Browser = ({ type, activeTabKey, children, ...rest }) => {
@@ -61,7 +64,8 @@ export {
   // Chrome components -> maybe DEPRECATE in the future because Chrome will have those inside of it
   Tab, Divider, AddButton,
   Chrome,
-  Firefox
+  Firefox,
+  Safari
 }
 
 export default Browser

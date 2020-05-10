@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import PropTypes from 'prop-types'
 import {CloseButton, FullscreenButton, MinifyButton} from './HeaderButton'
 
-const TAB_COLOR = "#ebecee";
+const TAB_COLOR = '#ebecee'
 
 const Header = styled.div`
   display: flex;
