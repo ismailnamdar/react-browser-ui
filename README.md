@@ -4,7 +4,7 @@
 
 [![NPM](https://img.shields.io/npm/v/react-browser-ui.svg)](https://www.npmjs.com/package/react-browser-ui) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
- 
+### Demo: https://react-browser-ui.netlify.app/
 
 Chrome (showHeader = true)  | Chrome (showHeader = false) 
 :-------------------------:|:-------------------------:
