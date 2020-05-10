@@ -86,7 +86,7 @@ export const Divider = styled.div`
 export const Tab = ({ isActive, imageUrl, imageAlt, title, onClick, onClose }) => {
   return (
     <StyledTab tabIndex={0} isActive={isActive} onClick={onClick} onKeyPress={onClick}>
-      <Button tabIndex={0} isActive={isActive} alignItems={'center'} visibility={'hidden'}onClick={onClose}>
+      <Button tabIndex={0} isActive={isActive} alignItems={'center'} visibility={'hidden'} onClick={onClose}>
         {'X'}
       </Button>
       <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center', flex: 1 }}>
@@ -122,7 +122,7 @@ Tab.defaultProps = {
 }
 
 const AddButton = (props) => (
-  <Button length={28} borderWidth={'1px 0 1px 0'} {...props}>
+  <Button length={26} borderWidth={'1px 0 1px 0'} {...props}>
     {'+'}
   </Button>
 )
