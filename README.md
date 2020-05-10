@@ -8,7 +8,7 @@
 
 Chrome (showHeader = true)  | Chrome (showHeader = false) 
 :-------------------------:|:-------------------------:
-![Browser ui example 1](./img/example04.png) | ![Browser ui example 2](./img/example03.png) 
+![Browser ui example 1](./img/example02.png) | ![Browser ui example 2](./img/example01.png) 
  Firefox (showHeader = true) | Firefox (showHeader = false)
 ![Browser ui example 4](./img/example06.png) | ![Browser ui example 3](./img/example05.png)
 ## Install
