@@ -160,7 +160,7 @@ Tab.defaultProps = {
 
 export const AddButton = (props) => {
   return (
-    <CircleButton tabIndex={0} length={28} fontSize={22} margin={'10px 0 0 8px'} {...props} >
+    <CircleButton tabIndex={0} length={28} fontSize={22} margin={'10px 0 0 8px'} alignItems={"center"} {...props} >
       {'+'}
     </CircleButton>
   )

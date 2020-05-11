@@ -120,7 +120,7 @@ Tab.defaultProps = {
 }
 
 const AddButton = (props) => (
-  <Button length={28} margin={'2.5px 0 0 2px'} {...props}>
+  <Button length={28} margin={'2.5px 0 0 2px'} alignItems={'center'} {...props}>
     {'+'}
   </Button>
 )
