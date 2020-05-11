@@ -1,3 +1,5 @@
+![Browser ui example 1](./img/logo.png#center)
+
 # react-browser-ui
 
 > use browser ui components inside your app!
