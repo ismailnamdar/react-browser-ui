@@ -45,6 +45,9 @@ const StyledTab = styled.div`
   outline: none;
   background-color: ${props => props.isActive ? 'white' : 'initial'};
   color: ${props => props.isActive ? 'initial' : 'white'};
+  &:hover {
+    background-color: ${props => !props.isActive && 'rgba(256,256,256,0.1)'};
+  }
 `
 
 const Button = styled.button`
@@ -138,6 +141,7 @@ function Firefox({ showHeader, tabs, children, tabEnd, onClose, onMinifyClick, o
           <MinifyButton onClick={onMinifyClick} />
           <FullscreenButton onClick={onFullscreenClick} />
         </div>}
+        {tabs != null && <Divider />}
         {tabs}
         {tabEnd}
       </Tabs>
@@ -162,7 +166,7 @@ Firefox.defaultProps = {
   showHeader: false,
   tabs: <React.Fragment />,
   tabEnd: <React.Fragment />,
-  children: <React.Fragment />,
+  children: undefined,
   onClose: () => {},
   onMinifyClick: () => {},
   onFullscreenClick: () => {}
