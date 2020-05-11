@@ -26,7 +26,7 @@ const Browser = ({ type, activeTabKey, children, ...rest }) => {
     setActiveTab(newActiveTab)
   }
   const BrowserComponent = BROWSER_COMPONENTS[type] ? BROWSER_COMPONENTS[type] : <React.Fragment>{`${type} is currently not supported`}</React.Fragment>
-  const childrenWithProps = Children.map(children, (child, index) => {
+  const childrenWithProps = children != null ? Children.map(children, (child, index) => {
     if (isValidElement(child)) {
       const modifiedChildren = [cloneElement(child, { ...child.props, isActive: child.key === activeTab, onClick: () => onClick(child.key) })]
       if (index !== children.length - 1) {
@@ -36,7 +36,7 @@ const Browser = ({ type, activeTabKey, children, ...rest }) => {
     }
 
     return child
-  })
+  }) : null
   const activeChild = Children.map(children, child => {
     if (child.key === activeTab) {
       return child.props.children
@@ -57,7 +57,7 @@ Browser.propTypes = {
 Browser.defaultProps = {
   type: BROWSER_TYPES.CHROME,
   activeTabKey: undefined,
-  children: <React.Fragment />
+  children: undefined
 }
 
 export {
