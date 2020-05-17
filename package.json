@@ -16,9 +16,14 @@
     "react",
     "browser",
     "ui",
+    "layout",
     "chrome",
+    "firefox",
+    "safari",
+    "web",
     "component",
-    "tab"
+    "tab",
+    "design"
   ],
   "scripts": {
     "test": "cross-env CI=1 react-scripts test --env=jsdom",
