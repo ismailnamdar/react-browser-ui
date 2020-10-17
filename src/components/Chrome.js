@@ -158,15 +158,20 @@ Tab.defaultProps = {
   onClose: () => {}
 }
 
+const StyledSpan = styled.span`
+  margin: 0;
+  margin-top: -4px;
+`
+
 export const AddButton = (props) => {
   return (
-    <CircleButton tabIndex={0} length={28} fontSize={22} margin={'10px 0 0 8px'} alignItems={"center"} {...props} >
-      {'+'}
+    <CircleButton tabIndex={0} length={28} fontSize={22} margin={'10px 0 0 8px'} alignItems={'center'} {...props} >
+      <StyledSpan>{'+'}</StyledSpan>
     </CircleButton>
   )
 }
 
-const Chrome = ({ showHeader, tabs, children, tabEnd, onClose, onMinifyClick, onFullscreenClick }) => {
+const Chrome = ({ showHeader, tabs, children, tabEnd, style, onClose, onMinifyClick, onFullscreenClick }) => {
   return (
     <React.Fragment>
       {showHeader && (
@@ -176,7 +181,7 @@ const Chrome = ({ showHeader, tabs, children, tabEnd, onClose, onMinifyClick, on
           <FullscreenButton onClick={onFullscreenClick} />
         </Header>
       )}
-      <Tabs borderDisable={showHeader}>
+      <Tabs borderDisable={showHeader} style={style}>
         {!showHeader && <HeaderButtonContainer>
           <CloseButton onClick={onClose} />
           <MinifyButton onClick={onMinifyClick} />
@@ -197,6 +202,7 @@ Chrome.propTypes = {
   tabs: PropTypes.node,
   children: PropTypes.node,
   tabEnd: PropTypes.node,
+  style: PropTypes.object, // eslint-disable-line react/forbid-prop-types
   onClose: PropTypes.func,
   onMinifyClick: PropTypes.func,
   onFullscreenClick: PropTypes.func
@@ -204,6 +210,7 @@ Chrome.propTypes = {
 
 Chrome.defaultProps = {
   showHeader: false,
+  style: undefined,
   tabs: <React.Fragment />,
   tabEnd: <React.Fragment />,
   children: <React.Fragment />,

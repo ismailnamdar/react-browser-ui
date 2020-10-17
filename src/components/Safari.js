@@ -122,12 +122,12 @@ Tab.defaultProps = {
 }
 
 const AddButton = (props) => (
-  <Button length={26} borderWidth={'1px 0 1px 0'} {...props}>
+  <Button length={26} borderWidth={'1px 0 1px 0'} alignItems={'center'} {...props}>
     {'+'}
   </Button>
 )
 
-function Safari({ showHeader, tabs, children, tabEnd, onClose, onMinifyClick, onFullscreenClick }) {
+function Safari({ showHeader, tabs, children, tabEnd, style, onClose, onMinifyClick, onFullscreenClick }) {
   return (
     <React.Fragment>
       {!showHeader && (
@@ -137,7 +137,7 @@ function Safari({ showHeader, tabs, children, tabEnd, onClose, onMinifyClick, on
           <FullscreenButton onClick={onFullscreenClick} />
         </Header>
       )}
-      <Tabs showHeader={showHeader}>
+      <Tabs showHeader={showHeader} style={style}>
         {tabs}
         {tabEnd}
       </Tabs>
@@ -149,6 +149,7 @@ function Safari({ showHeader, tabs, children, tabEnd, onClose, onMinifyClick, on
 }
 
 Safari.propTypes = {
+  style: PropTypes.object, // eslint-disable-line react/forbid-prop-types
   showHeader: PropTypes.bool,
   tabs: PropTypes.node,
   children: PropTypes.node,
@@ -159,6 +160,7 @@ Safari.propTypes = {
 }
 
 Safari.defaultProps = {
+  style: undefined,
   showHeader: false,
   tabs: <React.Fragment />,
   tabEnd: <React.Fragment />,

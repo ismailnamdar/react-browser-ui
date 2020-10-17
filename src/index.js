@@ -17,7 +17,7 @@ const BROWSER_COMPONENTS = {
   [BROWSER_TYPES.SAFARI]: Safari
 }
 
-const Browser = ({ type, activeTabKey, children, ...rest }) => {
+const Browser = ({ type, activeTabKey, children, onChange, ...rest }) => {
   const [activeTab, setActiveTab] = useState(null)
   useEffect(() => {
     setActiveTab(activeTabKey)
@@ -28,7 +28,8 @@ const Browser = ({ type, activeTabKey, children, ...rest }) => {
   const BrowserComponent = BROWSER_COMPONENTS[type] ? BROWSER_COMPONENTS[type] : <React.Fragment>{`${type} is currently not supported`}</React.Fragment>
   const childrenWithProps = children != null ? Children.map(children, (child, index) => {
     if (isValidElement(child)) {
-      const modifiedChildren = [cloneElement(child, { ...child.props, isActive: child.key === activeTab, onClick: () => onClick(child.key) })]
+      const childrenOnClick = typeof onChange === 'function' ? () => onChange(child.key) : () => onClick(child.key)
+      const modifiedChildren = [cloneElement(child, { ...child.props, isActive: child.key === activeTab, onClick: childrenOnClick })]
       if (index !== children.length - 1) {
         modifiedChildren.push(<BrowserComponent.Divider />)
       }
@@ -49,15 +50,17 @@ const Browser = ({ type, activeTabKey, children, ...rest }) => {
 }
 
 Browser.propTypes = {
-  type: PropTypes.oneOf([BROWSER_TYPES.CHROME]),
+  type: PropTypes.oneOf(Object.values(BROWSER_TYPES)),
   activeTabKey: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-  children: PropTypes.node
+  children: PropTypes.node,
+  onChange: PropTypes.func
 }
 
 Browser.defaultProps = {
   type: BROWSER_TYPES.CHROME,
   activeTabKey: undefined,
-  children: undefined
+  children: undefined,
+  onChange: undefined
 }
 
 export {

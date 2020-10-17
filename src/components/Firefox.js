@@ -125,7 +125,7 @@ const AddButton = (props) => (
   </Button>
 )
 
-function Firefox({ showHeader, tabs, children, tabEnd, onClose, onMinifyClick, onFullscreenClick }) {
+function Firefox({ showHeader, tabs, children, tabEnd, style, onClose, onMinifyClick, onFullscreenClick }) {
   return (
     <React.Fragment>
       {showHeader && (
@@ -135,7 +135,7 @@ function Firefox({ showHeader, tabs, children, tabEnd, onClose, onMinifyClick, o
           <FullscreenButton onClick={onFullscreenClick} />
         </Header>
       )}
-      <Tabs showHeader={showHeader}>
+      <Tabs showHeader={showHeader} style={style}>
         {!showHeader && <div style={{ marginTop: 8, marginRight: 46 }}>
           <CloseButton onClick={onClose} />
           <MinifyButton onClick={onMinifyClick} />
@@ -153,6 +153,7 @@ function Firefox({ showHeader, tabs, children, tabEnd, onClose, onMinifyClick, o
 }
 
 Firefox.propTypes = {
+  style: PropTypes.object, // eslint-disable-line react/forbid-prop-types
   showHeader: PropTypes.bool,
   tabs: PropTypes.node,
   children: PropTypes.node,
@@ -163,6 +164,7 @@ Firefox.propTypes = {
 }
 
 Firefox.defaultProps = {
+  style: undefined,
   showHeader: false,
   tabs: <React.Fragment />,
   tabEnd: <React.Fragment />,

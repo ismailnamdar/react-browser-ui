@@ -146,6 +146,7 @@ export default function SafariExample () {
 | activeTabKey | *String, Number* | `undefined` | active tab's key |
 | tabEnd | *ReactElements* | `<React.Fragment />` | additional react elements that will be insterted end of the tabs |
 | children | *ReactElements* | `<React.Fragment />` | `Tab` element collection will passed as a child in here |
+| onChange | *Function* | `undefined` | if you want your browser to be controlled by your state use 'onChange' property that sends 'key' of the 'Tab' as first parameter |
 | onClose | *Function* | `undefined` | action will be fired when browser close button clicked |
 | onMinifyClick | *Function* | `undefined` | action will be fired when browser minify button clicked |
 | onFullscreenClick | *Function* | `undefined` | action will be fired when browser fullscreen button clicked |
